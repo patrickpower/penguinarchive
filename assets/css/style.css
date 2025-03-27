@@ -98,6 +98,9 @@ aside {
   flex-basis: 50%;
   position: relative;
   padding: 0 3rem; }
+  @media (min-width: 992px) {
+    aside {
+      padding: 2rem 5rem 0; } }
   aside ul {
     flex-direction: column;
     display: flex;
