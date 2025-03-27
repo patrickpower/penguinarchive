@@ -1,0 +1,485 @@
+/* ==========================
+   1. CSS Reset (Modern Normalize)
+   ========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Ensure images, videos, and iframes don't overflow */
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Remove default list styles */
+ul, ol {
+    list-style: none;
+}
+
+/* Set a natural line height */
+html {
+    font-size: 100%; /* 16px default */
+    scroll-behavior: smooth; /* Enables smooth scrolling */
+}
+
+/* ==========================
+   2. Body and Typography
+   ========================== */
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgb(190, 36, 41);
+    background-color: #f9fdf9;
+    text-rendering: optimizeLegibility;
+	background-image:url("../images/grid_image.jpg");
+	background-blend-mode: multiply;
+	background-size: 120%;
+	background-attachment: fixed;
+	min-height: 100vh;
+    display: flex;
+	flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+	
+}
+
+/* Headings - Scalable and Readable */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    margin-bottom: 0.5em;
+}
+
+/* Links */
+a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover, a:focus {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Buttons */
+button {
+    cursor: pointer;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Inputs */
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* ==========================
+   3. Layout & Containers
+   ========================== */
+
+/* Flexible Grid Layout */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.col {
+    flex: 1;
+    padding: 15px;
+}
+
+aside {
+	order:1;
+	flex-basis:50%;
+	position:relative;
+	padding:0 3rem;
+	& ul {
+		flex-direction:column;
+		display:flex;
+		gap:20px;
+		& li {
+			opacity: 0; /* Start hidden */
+            transform: translateY(50px); /* Move down initially */
+            transition: opacity 0.5s, transform 0.5s;
+			mix-blend-mode: multiply;
+			& img {
+				-webkit-mix-blend-mode:multipy;
+				mix-blend-mode: multiply;
+			}
+			@media (min-width:992px){
+				& a {
+					cursor:pointer;
+					pointer-events: none;
+				}
+			}
+		}
+	}
+	& .cloak {
+		position: absolute;
+		top:0;
+		left:0;
+		height:100%;
+		width:100%;
+		background:transparent;
+		
+		z-index:3;
+		animation-name:disappear;
+		animation-duration: 0.01s;
+		animation-delay:4s;
+		animation-fill-mode: forwards;
+	}
+}
+@keyframes disappear {
+	0%{
+		visibility: visible;
+		z-index:3;
+	}
+	100% {
+		visibility: hidden;
+		z-index:-999;
+	}
+}
+
+div.footer {
+	opacity:0;
+	animation-name: loadIn;
+	animation-duration: 1.5s;
+	animation-delay:2.5s;
+	animation-fill-mode: forwards;
+	padding-right:2rem;
+	position:absolute;
+	bottom:0;
+	width:100%;
+	font-family:'Gill Sans', sans-serif;
+	z-index:2;
+	font-size:11px;
+	text-align: center;
+	@media (max-width:992px){
+		position:fixed;
+		bottom:0;
+		left:0;
+		padding:.5rem 0;
+		z-index:2;
+		background-color:#f9fdf9;display:flex;
+		justify-content:center;
+		align-items:center;
+		gap:1rem;
+		& h1 {
+			margin:0;
+		}
+	}
+	& h1 {
+		font-weight:400;
+		text-transform: uppercase;
+		letter-spacing: 4px;
+		font-size:12px;
+		& a {
+			color:inherit;
+		}
+	}
+	& ol {
+		padding:0;
+		display: flex;
+		list-style:none;
+		justify-content: center;
+		gap:.25rem;
+		& li {
+			& a {
+				width:30px;
+				height:30px;
+				display:block;
+				background-image:url("../images/icons.png");
+				background-size:60px;
+				&.insta_link {
+					background-position:top right;
+				}
+				&.x_link {
+					background-position:bottom left;
+				}
+			}
+		}
+	}
+}
+
+
+.img-wrapper {
+  position: relative;
+  display: inline-block;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.14);
+  border-radius: 10px; /* Adjust to match image */
+}
+
+#minimalModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+#minimalModal .modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 80%;
+}
+
+#modalLink img {
+    width: 100%;
+    height: auto;
+	max-width:430px;
+}
+
+#closeModal {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 32px;
+    color: white;
+    cursor: pointer;
+}
+
+
+footer {
+	background-color:black;
+	padding:20px 0;
+	@media(max-width:991px){
+		padding-bottom:4rem;
+	}
+	& div.footer_inner {
+		padding:0 1rem;
+		display:flex;
+		flex-direction:column;
+		margin: 0 auto;
+		max-width:1024px;
+		@media(min-width: 992px){
+			flex-direction:row;
+		}
+		
+		& .footer_prh_left {
+		  display: flex;
+		  align-items: center;
+		  justify-content: flex-start;
+			& img {
+				width: 100%;
+				max-width: 70px;
+				margin-right: 15px;
+			}
+			& p {
+				font-family: "Arial";
+			  	font-size: 12px;
+			  	color: white;
+				& a {
+					font-size: inherit;
+					color: #c7511f;
+					display: inline-block;
+					margin-top: 5px;
+					text-decoration: none;
+				}
+			}
+		}
+		
+		& .footer_prh_right {
+			order: -1;
+		  	margin-bottom: 20px;
+			@media (min-width:992px){
+				order: 2;
+				margin-bottom: 0;
+				text-align: right;
+			}
+			& p {
+				font-family: "Arial";
+				font-size: 11px;
+				color: #757474;
+				& a {
+					font-size: inherit;
+				  	color: white;
+				  	display: inline-block;
+				  	margin-bottom: 5px;
+				  	text-decoration: none;	
+					
+				}
+			}
+		}
+		& > div {
+			@media (min-width: 992px){
+				flex-basis:50%;
+			}
+		}
+	}
+	
+}
+
+main {
+	order:0;
+	flex-basis: 50%;
+	@media (min-width:992px){
+		position:sticky;
+		top:1vh;
+		height: 98vh;
+		min-height:550px;
+	}
+	& ul {
+		z-index:1;
+		position: relative;
+		height:100%;
+		& li {
+			position: absolute;
+			height:100%;
+			width:100%;
+			display: none;
+			justify-content: center;
+			padding-right:2rem;
+			& a {
+				height:100%;
+				position:relative;
+				display:flex;
+				align-items:center;
+			}
+			& img {
+				max-height:85%;
+				margin:-15% auto 0;
+				box-shadow: 10px 10px 10px rgba(0,0,0,0.14);
+				
+			}
+		}
+	}
+	& section {
+		z-index:0;
+	  	top: 0;
+		height:66vh;
+	  	display: flex;
+	  	flex-direction: column;
+	  	align-items: center;
+	  	justify-content: center;
+		font-family: 'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, 'sans-serif';
+		@media(min-width:992px){
+			padding-right:2rem;
+			position:absolute;
+	  		height: 100%;
+		}
+		& p {
+			text-align: center;
+		}
+	}
+}
+
+.content {
+	max-width:1024px;
+	margin:0 auto;
+	width:100%;
+	flex: 1;
+	display:flex;
+	padding-bottom: 3rem;
+	@media (max-width:991px){
+		flex-direction: column;
+		max-width:600px;
+	}
+}
+
+
+img.landing_main_penguin_logo {
+	opacity:0;
+	width:90px;
+	animation-name:loadIn;
+	animation-duration:.75s;
+	animation-delay: 1.25s;
+	animation-fill-mode: forwards;
+}
+
+img.landing_penguin_title {
+	opacity:0;
+	animation-name:loadIn;
+	animation-duration:3.5s;
+	animation-fill-mode: forwards;
+	width: auto;
+}
+
+p.landing_quote {
+	opacity:0;
+	animation-name:loadIn;
+	animation-duration:1.5s;
+	animation-fill-mode: forwards;
+	animation-delay:2.1s;
+	font-family:"EB Garamond", serif;
+	font-style:italic;
+	font-size: 21px;
+	margin-top: 1rem;
+	color: #be2429;
+	font-weight: 400;
+	width:66.66%;
+}
+
+@keyframes loadIn{
+	0% {
+		opacity:0;
+	}
+	100% {
+		opacity:100%;
+	}
+}
+
+/* ==========================
+   4. Accessibility & Performance
+   ========================== */
+:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* Hide elements but keep them accessible */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* ==========================
+   5. Responsive Media Queries
+   ========================== */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    .row {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+}
