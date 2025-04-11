@@ -278,7 +278,8 @@
 
 					<a href="https://www.penguin.co.uk/company/about-us/notices/privacy-policy.html" target="_blank">Penguin Privacy Policy</a> | <a href="https://www.penguin.co.uk/company/about-us/notices/terms---conditions.html" target="_blank">Terms of Service</a> | <a href="https://www.penguin.co.uk/company/about-us/notices/cookies-policy.html" target="_blank">Cookie Policy</a><br>
 					© 1995 - 2021 Penguin Books Ltd. Registered number: 861590 England.<br>
-					Registered office: 20 Vauxhall Bridge Road, London, SW1V 2SA UK.
+					Registered office: 20 Vauxhall Bridge Road, London, SW1V 2SA UK.<br>
+					Website by <a href="https://printedpapers.co" target="_blank" style="color: inherit">printed papers</a>.
 					</p>
 				</div>
 			</div>
@@ -290,7 +291,7 @@
 		// Select all <li> elements
 		const listItems = gsap.utils.toArray("aside li");
 
-		// 1️⃣ Staggered fade-in for initially visible <li>s
+		// Staggered fade-in for initially visible <li>s
 		const visibleItems = listItems.filter(item => item.getBoundingClientRect().top < window.innerHeight);
 
 		gsap.to(visibleItems, { 
@@ -301,7 +302,7 @@
 			stagger: 0.15 // Stagger effect for initial batch
 		});
 
-		// 2️⃣ Scroll-triggered fade-in for the rest
+		// Scroll-triggered fade-in for the rest
 		listItems.forEach((item) => {
 			if (!visibleItems.includes(item)) {
 				gsap.to(item, {
@@ -330,6 +331,8 @@
 
 			asideListItems.forEach(function (asideLi) {
 			  asideLi.addEventListener('mouseenter', function () {
+				 document.querySelector('main ul').style.zIndex = '1';
+
 				const dataJacket = asideLi.querySelector('a').getAttribute('data-jacket'); // Get data-jacket value
 
 				// Find the corresponding main li
@@ -355,6 +358,9 @@
 
 			// Hide the main li and landing_penguin_title when leaving both aside and main
 			sectionWrapper.addEventListener('mouseleave', function () {
+				
+				document.querySelector('main ul').style.zIndex = '-1';
+
 			  if (currentMainLi) {
 				currentMainLi.style.display = 'none'; // Hide the current mainLi
 				currentMainLi = null; // Reset the state

@@ -285,7 +285,7 @@ footer {
 		
 		& .footer_prh_left {
 		  display: flex;
-		  align-items: center;
+		  align-items: flex-start;
 		  justify-content: flex-start;
 			& img {
 				width: 100%;
@@ -347,7 +347,7 @@ main {
 		min-height:550px;
 	}
 	& ul {
-		z-index:1;
+		z-index:-1;
 		position: relative;
 		height:100%;
 		& li {

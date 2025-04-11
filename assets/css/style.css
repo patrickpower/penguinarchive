@@ -247,7 +247,7 @@ footer {
         flex-direction: row; } }
     footer div.footer_inner .footer_prh_left {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: flex-start; }
       footer div.footer_inner .footer_prh_left img {
         width: 100%;
@@ -295,7 +295,7 @@ main {
       height: 98vh;
       min-height: 550px; } }
   main ul {
-    z-index: 1;
+    z-index: -1;
     position: relative;
     height: 100%; }
     main ul li {
